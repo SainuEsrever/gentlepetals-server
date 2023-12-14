@@ -1,7 +1,13 @@
 const joi = require('joi');
 
 const signUpValidator = joi.object({
-    userName : joi.string().required().min(6).max(25).message({
+    firstName : joi.string().required().min(2).max(25).message({
+        "string.empty" : "username không được để trống",
+        "any.required" : "username là bắt buộc",
+        "string.min" : "username phải có ít nhất {#limit} ký tự",
+        "string.max" : "username không được vượt quá {#limit} ký tự",
+    }),
+    lastName : joi.string().required().min(2).max(25).message({
         "string.empty" : "username không được để trống",
         "any.required" : "username là bắt buộc",
         "string.min" : "username phải có ít nhất {#limit} ký tự",
@@ -24,7 +30,19 @@ const signUpValidator = joi.object({
         "string.min" : "Confirmpassword phải có ít nhất {#limit} ký tự",
         "string.max" : "Confirmpassword không được vượt quá {#limit} ký tự",
     }).valid(joi.ref("password"), { message: "Confirmpassword không khớp" }),
-    role : joi.string()
+
+    phoneNumber : joi.string().required().pattern(/^\d{10}$/).message({
+        "string.empty" : "phoneNumber không được để trống",
+        "any.required" : "phoneNumber là bắt buộc",
+        "string.pattern.base" : "phoneNumber không đúng định dạng"
+    }),
+    role : joi.string(),
+    address : joi.string(),
+    city : joi.string(),
+    state : joi.string(),
+    country : joi.string(),
+    totalOrder : joi.number(),
+    status : joi.string(),
 });
 
 const signInValidator = joi.object({

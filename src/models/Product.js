@@ -8,9 +8,20 @@ const productSchema = new Schema({
             required: true,
             minlength: 5,
         }, 
+        amount: {
+            type: Number,
+            required: true,
+        },
         price: {
             type: Number,
             required: true,
+        },
+        // images:{
+        //     data : Buffer,
+        //     contentType : String,
+        // },
+        image : {
+            type: String,
         },
         description : {
             type: String,

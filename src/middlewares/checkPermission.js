@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const { User } = require('../models/User')
+const { Account } = require('../models/Account')
 const dotenv = require('dotenv')
 dotenv.config()
 
@@ -19,7 +19,7 @@ const checkPermission = async (req, res, next) => {
 
         // 3 - Kiểm tra quyền
         const decoded = jwt.verify(token, SECRET_CODE)
-        const user = await User.findById(decoded._id)
+        const user = await Account.findById(decoded._id)
 
         if(!user){
             return res.status(403).json({

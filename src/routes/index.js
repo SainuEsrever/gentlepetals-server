@@ -5,6 +5,12 @@ const authRouter = require('./authRoutes')
 
 const categoriesRouter = require('./categoryRoutes')
 const productRouter = require('./productRoutes')
+const blogRouter = require('./blogRoutes')
+const cartRouter = require('./cartRoutes')
+const orderRouter = require('./orderRoutes')
+const billingRouter = require('./billingRoutes')
+
+// const ImgsRouter = require('./uploadImgRoutes')
 
 
 router.get('/', (req, res) => {
@@ -15,5 +21,11 @@ router.use("/auth", authRouter)
 
 router.use("/category", categoriesRouter)
 router.use("/product", productRouter)
+router.use("/blog", blogRouter)
+router.use("/cart", cartRouter)
+router.use("/cart", orderRouter)
+router.use("/billing", billingRouter)
+
+// router.use("/images", ImgsRouter)
 
 module.exports = router
