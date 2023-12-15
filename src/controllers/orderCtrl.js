@@ -11,9 +11,9 @@ module.exports = {
     getAll: async (req, res) => {
         try {
 
-            const data = await Order.find({}).populate("accountId")
+            const data = await Order.find({}).populate('accountId')
 
-            if (!data.docs || data.docs.length === 0) {
+            if (!data) {
                 res.status(404).json({ message: "Không tìm thấy Order nào cả !" })
             }
             res.status(200).json({
@@ -31,10 +31,10 @@ module.exports = {
         try {
             const data = await Order.findById(req.params.id)
             if (!data) {
-                res.status(404).json({ message: "Không tìm thấy Blog nào cả !" })
+                res.status(404).json({ message: "Không tìm thấy Order nào cả !" })
             }
             res.status(200).json({
-                message: "Tìm thấy Blog sau !",
+                message: "Tìm thấy Order sau !",
                 data: data
             })
         } catch (error) {
@@ -47,7 +47,7 @@ module.exports = {
     create: async (req, res) => {
         try {
 
-            const { error } = OrderValidator.validate(req.body)
+            const { error } = orderValidator.validate(req.body)
 
             if (error) {
                 return res.status(400).json({
@@ -60,11 +60,11 @@ module.exports = {
             })
 
             if (!data) {
-                res.status(404).json({ message: "Tạo Blog không thành công" })
+                res.status(404).json({ message: "Tạo Order không thành công" })
             }
 
             return res.status(200).json({
-                message: "Tạo Blog thành công",
+                message: "Tạo Order thành công",
                 data: data
             })
         } catch (error) {
@@ -77,7 +77,7 @@ module.exports = {
     update: async (req, res) => {
         try {
 
-            const { error } = OrderValidator.validate(req.body, { abortEarly: false })
+            const { error } = orderValidator.validate(req.body, { abortEarly: false })
             if (error) {
                 return res.status(400).json({
                     message: error.details[0].message
@@ -91,7 +91,7 @@ module.exports = {
             })
 
             if (!data) {
-                res.status(404).json({ message: "Sửa Blog không thành công" })
+                res.status(404).json({ message: "Sửa Order không thành công" })
             }
 
             return res.status(200).json({
@@ -110,11 +110,11 @@ module.exports = {
             const data = await Order.findByIdAndDelete(req.params.id)
             if (!data) {
                 return res.status(400).json({
-                    message: "Không tìm thấy sản phẩm"
+                    message: "Không tìm thấy Order này !"
                 })
             }
             return res.status(200).json({
-                message: "Xóa sản phẩm thành công",
+                message: "Xóa Order thành công",
                 data: data
             })
         } catch (error) {

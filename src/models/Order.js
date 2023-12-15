@@ -8,7 +8,7 @@ const orderSchema = new Schema({
         ref : 'Account',
         required: true,
     },
-    products : {
+    products : [{
         productId : {
             type : Schema.Types.ObjectId,
             ref : 'Product',
@@ -18,7 +18,7 @@ const orderSchema = new Schema({
             type: Number,
             required: true,
         },
-    },
+}],
     totalPrice: {
         type: Number,
         defaultValue: 0,

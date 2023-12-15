@@ -50,11 +50,11 @@ const accountSchema = new Schema({
         type: String,
         default: 'active'
     },
-    cartId : {
-        type: Schema.Types.ObjectId,
-        ref: 'Cart',
-        unique: true,
-    },
+    // cartId : {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Cart',
+    //     unique: true,
+    // },
 },
 {
     versionKey: false,

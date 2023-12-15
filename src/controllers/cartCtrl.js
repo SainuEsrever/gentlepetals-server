@@ -13,7 +13,7 @@ module.exports = {
 
             const data = await Cart.find({}).populate("accountId")
 
-            if (!data.docs || data.docs.length === 0) {
+            if (!data) {
                 res.status(404).json({ message: "Không tìm thấy Cart nào cả !" })
             }
             res.status(200).json({
@@ -31,10 +31,10 @@ module.exports = {
         try {
             const data = await Cart.findById(req.params.id)
             if (!data) {
-                res.status(404).json({ message: "Không tìm thấy Blog nào cả !" })
+                res.status(404).json({ message: "Không tìm thấy Cart nào cả !" })
             }
             res.status(200).json({
-                message: "Tìm thấy Blog sau !",
+                message: "Tìm thấy Cart sau !",
                 data: data
             })
         } catch (error) {
@@ -60,11 +60,11 @@ module.exports = {
             })
 
             if (!data) {
-                res.status(404).json({ message: "Tạo Blog không thành công" })
+                res.status(404).json({ message: "Tạo Cart không thành công" })
             }
 
             return res.status(200).json({
-                message: "Tạo Blog thành công",
+                message: "Tạo Cart thành công",
                 data: data
             })
         } catch (error) {
@@ -91,7 +91,7 @@ module.exports = {
             })
 
             if (!data) {
-                res.status(404).json({ message: "Sửa Blog không thành công" })
+                res.status(404).json({ message: "Sửa Cart không thành công" })
             }
 
             return res.status(200).json({

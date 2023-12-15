@@ -1,10 +1,12 @@
 const joi = require('joi');
 
 const cartValidator = joi.object({
-    // accountId: joi.string().required().unique.message({
-    //     "string.empty" : "title không được để trống",
-    //     "any.required" : "title là bắt buộc",
-    // })
+    accountId: joi.string().required(),
+    products: joi.array().items({
+        productId: joi.string().required(),
+        amount: joi.number().required(),
+    }).required(),
+    totalPrice: joi.number().required(),
 });
 
 module.exports = {cartValidator}

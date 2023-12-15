@@ -23,7 +23,7 @@ router.use("/category", categoriesRouter)
 router.use("/product", productRouter)
 router.use("/blog", blogRouter)
 router.use("/cart", cartRouter)
-router.use("/cart", orderRouter)
+router.use("/order", orderRouter)
 router.use("/billing", billingRouter)
 
 // router.use("/images", ImgsRouter)

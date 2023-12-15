@@ -13,7 +13,7 @@ module.exports = {
 
             const data = await Billing.find({}).populate("accountId")
 
-            if (!data.docs || data.docs.length === 0) {
+            if (!DataTransferItemList) {
                 res.status(404).json({ message: "Không tìm thấy Billing nào cả !" })
             }
             res.status(200).json({
@@ -31,10 +31,10 @@ module.exports = {
         try {
             const data = await Billing.findById(req.params.id)
             if (!data) {
-                res.status(404).json({ message: "Không tìm thấy Blog nào cả !" })
+                res.status(404).json({ message: "Không tìm thấy Bill nào cả !" })
             }
             res.status(200).json({
-                message: "Tìm thấy Blog sau !",
+                message: "Tìm thấy Bill sau !",
                 data: data
             })
         } catch (error) {
@@ -47,7 +47,7 @@ module.exports = {
     create: async (req, res) => {
         try {
 
-            const { error } = BillingValidator.validate(req.body)
+            const { error } = billingValidator.validate(req.body)
 
             if (error) {
                 return res.status(400).json({
@@ -60,16 +60,17 @@ module.exports = {
             })
 
             if (!data) {
-                res.status(404).json({ message: "Tạo Blog không thành công" })
+                res.status(404).json({ message: "Tạo Bill không thành công" })
             }
 
             return res.status(200).json({
-                message: "Tạo Blog thành công",
+                message: "Tạo Bill thành công",
                 data: data
             })
         } catch (error) {
             res.status(500).json({
-                message: error,
+                name : "lỗi ngoài",
+                message: error.message,
             })
         }
     },
@@ -77,7 +78,7 @@ module.exports = {
     update: async (req, res) => {
         try {
 
-            const { error } = BillingValidator.validate(req.body, { abortEarly: false })
+            const { error } = billingValidator.validate(req.body, { abortEarly: false })
             if (error) {
                 return res.status(400).json({
                     message: error.details[0].message
@@ -91,7 +92,7 @@ module.exports = {
             })
 
             if (!data) {
-                res.status(404).json({ message: "Sửa Blog không thành công" })
+                res.status(404).json({ message: "Sửa Bill không thành công" })
             }
 
             return res.status(200).json({
@@ -110,11 +111,11 @@ module.exports = {
             const data = await Billing.findByIdAndDelete(req.params.id)
             if (!data) {
                 return res.status(400).json({
-                    message: "Không tìm thấy sản phẩm"
+                    message: "Không tìm thấy Bill"
                 })
             }
             return res.status(200).json({
-                message: "Xóa sản phẩm thành công",
+                message: "Xóa Bill thành công",
                 data: data
             })
         } catch (error) {

@@ -7,6 +7,7 @@ const orderValidator = joi.object({
         amount: joi.number().required(),
     }).required(),
     totalPrice: joi.number().required(),
+    address : joi.string().required(),
 });
 
 module.exports = {orderValidator}

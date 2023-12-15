@@ -28,4 +28,6 @@ const billingSchema = new Schema({
     timestamps: true,
 })
 
-module.exports = mongoose.model('Billing', billingSchema)
+const Billing = mongoose.model('Billing', billingSchema)
+
+module.exports = {Billing}
