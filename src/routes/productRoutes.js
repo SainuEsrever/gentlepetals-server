@@ -7,8 +7,8 @@ const checkPermission = require('../middlewares/checkPermission');
 productRouter.get('/', productCtrl.getAll)
 productRouter.get("/:id", productCtrl.getDetail)
 productRouter.get("/c/:categoryId", productCtrl.getListByCategory)
-productRouter.post('/create', checkPermission, productCtrl.create)
-productRouter.put('/update/:id', checkPermission, productCtrl.update)
-productRouter.delete('/delete/:id', checkPermission, productCtrl.remove)
+productRouter.post('/', checkPermission, productCtrl.create)
+productRouter.patch('/:id', checkPermission, productCtrl.update)
+productRouter.delete('/:id', checkPermission, productCtrl.remove)
 
 module.exports = productRouter
