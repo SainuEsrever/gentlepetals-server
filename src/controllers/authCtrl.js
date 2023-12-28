@@ -7,6 +7,7 @@ dotenv.config()
 const { SECRET_CODE } = process.env
 
 const { signUpValidator, signInValidator } = require('../validation/accountValid')
+const { changePasswordValidator } = require('../validation/changepassValid')
 
 
 module.exports = {
@@ -184,5 +185,45 @@ module.exports = {
                 message: error.message
             })
         }
-    }
+    },
+
+    changePassword: async (req, res) => {
+        try {
+          // Validate input
+          const { error } = changePasswordValidator.validate(req.body, { abortEarly: false });
+    
+          if (error) {
+            const errorMessages = error.details.map((err) => err.message);
+            return res.status(400).json({
+              message: errorMessages,
+            });
+          }
+    
+          // Retrieve user from database (assuming you store the user ID in the request)
+          const user = await Account.findById(req.user._id);
+    
+          // Check if the current password matches
+          const isMatch = await bcryptjs.compare(req.body.currentPassword, user.password);
+    
+          if (!isMatch) {
+            return res.status(400).json({
+              message: 'Mật khẩu hiện tại không đúng!',
+            });
+          }
+    
+          // Hash and update the new password
+          const hashNewPassword = await bcryptjs.hash(req.body.newPassword, 10);
+          user.password = hashNewPassword;
+          await user.save();
+    
+          return res.status(200).json({
+            message: 'Đổi mật khẩu thành công!',
+          });
+        } catch (error) {
+          return res.status(500).json({
+            name: error.name,
+            message: error.message,
+          });
+        }
+      },
 }
