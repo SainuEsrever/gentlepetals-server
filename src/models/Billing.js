@@ -18,6 +18,10 @@ const billingSchema = new Schema({
         defaultValue: 0,
         required: true,
     },
+    method: {
+        type: String,
+        required: true,
+    },
     status : {
         type: String,
         default: 'pending'

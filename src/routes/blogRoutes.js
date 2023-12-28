@@ -7,8 +7,8 @@ const checkPermission = require('../middlewares/checkPermission');
 blogRouter.get('/', blogCtrl.getAll)
 blogRouter.get("/:id", blogCtrl.getDetail)
 
-blogRouter.post('/create', checkPermission, blogCtrl.create)
-blogRouter.put('/update/:id', checkPermission, blogCtrl.update)
-blogRouter.delete('/delete/:id', checkPermission, blogCtrl.remove)
+blogRouter.post('/', checkPermission, blogCtrl.create)
+blogRouter.put('/:id', checkPermission, blogCtrl.update)
+blogRouter.delete('/:id', checkPermission, blogCtrl.remove)
 
 module.exports = blogRouter
