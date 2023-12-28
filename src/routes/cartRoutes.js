@@ -7,7 +7,7 @@ const checkPermission = require('../middlewares/checkPermission');
 cartRouter.get('/', cartCtrl.getAll)
 cartRouter.get("/:id", cartCtrl.getDetail)
 
-cartRouter.post('/create', checkPermission, cartCtrl.create)
-cartRouter.put('/update/:id', checkPermission, cartCtrl.update)
+cartRouter.post('/', cartCtrl.create)
+cartRouter.put('/:id', cartCtrl.update)
 
 module.exports = cartRouter
