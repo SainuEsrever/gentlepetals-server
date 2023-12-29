@@ -8,6 +8,7 @@ cartRouter.get('/', cartCtrl.getAll)
 cartRouter.get("/:id", cartCtrl.getDetail)
 
 cartRouter.post('/', cartCtrl.create)
-cartRouter.put('/:id', cartCtrl.update)
+cartRouter.patch('/:id', cartCtrl.update)
+cartRouter.delete('/:id', cartCtrl.remove)
 
 module.exports = cartRouter

@@ -105,22 +105,22 @@ module.exports = {
         }
     },
 
-    // remove: async (req, res) => {
-    //     try {
-    //         const data = await Cart.findByIdAndDelete(req.params.id)
-    //         if (!data) {
-    //             return res.status(400).json({
-    //                 message: "Không tìm thấy sản phẩm"
-    //             })
-    //         }
-    //         return res.status(200).json({
-    //             message: "Xóa sản phẩm thành công",
-    //             data: data
-    //         })
-    //     } catch (error) {
-    //         res.status(500).json({
-    //             message: error,
-    //         })
-    //     }
-    // }
+    remove: async (req, res) => {
+        try {
+            const data = await Cart.findByIdAndDelete(req.params.id)
+            if (!data) {
+                return res.status(400).json({
+                    message: "Không tìm thấy cart"
+                })
+            }
+            return res.status(200).json({
+                message: "Xóa cart thành công",
+                data: data
+            })
+        } catch (error) {
+            res.status(500).json({
+                message: error,
+            })
+        }
+    }
 }

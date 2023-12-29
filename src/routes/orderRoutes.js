@@ -9,6 +9,6 @@ orderRouter.get("/:id", orderCtrl.getDetail)
 
 orderRouter.post('/', checkPermission, orderCtrl.create)
 orderRouter.put('/:id', checkPermission, orderCtrl.update)
-orderRouter.put('/:id', checkPermission, orderCtrl.remove)
+orderRouter.delete('/:id', checkPermission, orderCtrl.remove)
 
 module.exports = orderRouter
