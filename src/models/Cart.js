@@ -21,6 +21,7 @@ const cartSchema = new Schema({
             type: Number,
             required: true,
         },
+        _id : false,
     }],
     totalPrice: {
         type: Number,

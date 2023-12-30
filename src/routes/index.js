@@ -10,7 +10,8 @@ const cartRouter = require('./cartRoutes')
 const orderRouter = require('./orderRoutes')
 const billingRouter = require('./billingRoutes')
 
-// const ImgsRouter = require('./uploadImgRoutes')
+const ImgsRouter = require('./uploadImgRoutes');
+const upload = require('../middlewares/uploadMidle');
 
 
 router.get('/', (req, res) => {
@@ -26,6 +27,6 @@ router.use("/cart", cartRouter)
 router.use("/order", orderRouter)
 router.use("/billing", billingRouter)
 
-// router.use("/images", ImgsRouter)
+router.use("/images",ImgsRouter)
 
 module.exports = router

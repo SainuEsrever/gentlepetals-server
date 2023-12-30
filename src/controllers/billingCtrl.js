@@ -13,7 +13,7 @@ module.exports = {
 
             const data = await Billing.find({}).populate("accountId")
 
-            if (!DataTransferItemList) {
+            if (!data) {
                 res.status(404).json({ message: "Không tìm thấy Billing nào cả !" })
             }
             res.status(200).json({
@@ -78,12 +78,12 @@ module.exports = {
     update: async (req, res) => {
         try {
 
-            const { error } = billingValidator.validate(req.body, { abortEarly: false })
-            if (error) {
-                return res.status(400).json({
-                    message: error.details[0].message
-                })
-            }
+            // const { error } = billingValidator.validate(req.body, { abortEarly: false })
+            // if (error) {
+            //     return res.status(400).json({
+            //         message: error.details[0].message
+            //     })
+            // }
 
             const data = await Billing.findByIdAndUpdate(req.params.id, {
                 ...req.body,
