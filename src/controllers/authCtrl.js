@@ -189,15 +189,15 @@ module.exports = {
 
     changePassword: async (req, res) => {
         try {
-          // Validate input
-          const { error } = changePasswordValidator.validate(req.body, { abortEarly: false });
+        //   // Validate input
+        //   const { error } = changePasswordValidator.validate(req.body, { abortEarly: false });
     
-          if (error) {
-            const errorMessages = error.details.map((err) => err.message);
-            return res.status(400).json({
-              message: errorMessages,
-            });
-          }
+        //   if (error) {
+        //     const errorMessages = error.details.map((err) => err.message);
+        //     return res.status(400).json({
+        //       message: errorMessages,
+        //     });
+        //   }
     
           // Retrieve user from database (assuming you store the user ID in the request)
           const user = await Account.findById(req.user._id);

@@ -12,7 +12,7 @@ authRouter.get('/', checkPermission, getAllProfile)
 
 authRouter.get('/:id', getOneProfile)
 
-authRouter.put('/:id', 
+authRouter.patch('/:id', 
 // checkPermission
 changeProfile)
 
