@@ -4,7 +4,7 @@ const authRouter = express.Router()
 
 const checkPermission = require('../middlewares/checkPermission');
 
-authRouter.put('/change-password', checkPermission, changePassword)
+authRouter.post('/change-password/:id', checkPermission, changePassword)
 authRouter.post('/signup', signUp)
 authRouter.post('/signin', signIn)
 
