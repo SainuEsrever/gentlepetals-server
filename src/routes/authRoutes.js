@@ -7,9 +7,14 @@ const checkPermission = require('../middlewares/checkPermission');
 authRouter.post('/change-password/:id', checkPermission, changePassword)
 authRouter.post('/signup', signUp)
 authRouter.post('/signin', signIn)
+
 authRouter.get('/', checkPermission, getAllProfile)
+
 authRouter.get('/:id', getOneProfile)
-authRouter.patch('/:id', changeProfile)
+
+authRouter.patch('/:id', 
+// checkPermission
+changeProfile)
 
 
 module.exports = authRouter
