@@ -9,7 +9,7 @@ authRouter.post('/signup', signUp)
 authRouter.post('/signin', signIn)
 authRouter.get('/', checkPermission, getAllProfile)
 authRouter.get('/:id', getOneProfile)
-authRouter.put('/:id', changeProfile)
+authRouter.patch('/:id', changeProfile)
 
 
 module.exports = authRouter
